@@ -1,0 +1,45 @@
+<h3>Crear Personaje</h3>
+<form [formGroup]="formulario">
+  <div class="formgroup-inline">
+
+    <!-- campo nombre -->
+    <div class="field pt-1">
+      <p-inputGroup>
+        <p-inputGroupAddon>
+            <i class="pi pi-user"></i>
+        </p-inputGroupAddon>
+        <p-floatLabel>
+          <input pInputText id="nomImput"  formControlName="nombrePersonaje" type=""/>
+          <label for="nomImput">Nombre Personaje</label>
+        </p-floatLabel>
+      </p-inputGroup>
+
+      @if (formulario.get("nombrePersonaje")?.invalid && formulario.get("nombrePersonaje")?.touched) {
+        <div>
+          El Campo es requerido
+        </div>
+      }
+    </div>
+
+    <!-- capitulos -->
+    <div class="field p-1">
+
+      <p-floatLabel>
+        <p-multiSelect
+          id="multi"
+          [options]="listaCapitulosdisponibles"
+          formControlName="selectedCapitulos"
+          optionLabel="value"
+          placeholder="Lista de Capitulos disponibles"
+      />
+      <label> Seleccione Capitulos </label>
+      </p-floatLabel>
+
+  </div>
+    <!-- boton formualrio  -->
+
+  </div>
+
+  <p-button  label="Crear" type="submit" (click)="onSubmit()" ></p-button>
+
+</form>

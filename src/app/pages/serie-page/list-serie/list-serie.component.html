@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col">
+    <!-- Tabla  -->
+    <div class="card">
+      <p-table [value]="listaSeriesFiltrada" [tableStyle]="{ 'min-width': '50rem' }"  >
+
+        <ng-template pTemplate="caption">
+          <div class="flex align-items-center justify-content-between">
+              Lista series
+              <a routerLink="/crear-series" class="p-button font-bold">
+                Crear Serie
+            </a>
+              <component-search-box
+              placeholder="Buscar Serie por id"
+              (onDebounce)="searchSerieById($event)"
+              />
+
+          </div>
+      </ng-template>
+          <ng-template pTemplate="header" let-columns #table>
+              <tr>
+                  <th>#Id</th>
+                  <th>Nombre</th>
+                  <th>Capitulos que le pertenecen</th>
+                  <th>Editar Datos</th>
+                  <th>Borrar Serie</th>
+
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-ser >
+              <tr>
+                <td>
+                    {{ ser.id_serie }}
+                </td>
+                <td>
+                    {{ ser.nombre_serie }}
+                </td>
+                <td>
+                  {{ ser.capitulos }}
+                </td>
+                <td>
+                  @if (ser.capitulos.length == 0) {
+                    <p-button label="Editar" (onClick)="goEditarPage(ser)"></p-button>
+                  }@else {
+                    <p-button label="Capitulo no Editable" disabled="true" ></p-button>
+                  }
+                </td>
+                <td>
+                  <div>
+                    <p-button (onClick)="confirm2($event , ser.id_serie)" label="Borrar" severity="danger" outlined="true"/>
+                  </div>
+                </td>
+              </tr>
+          </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

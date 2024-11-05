@@ -1,0 +1,57 @@
+<h3 >Editar Personaje :  {{personajeRecibido?.nombre_personaje}}</h3>
+
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()" >
+
+  <div class="formgroup-inline pt-2">
+    <div class="field p-1">
+      <p-inputGroup >
+        <p-inputGroupAddon><i class="pi pi-hashtag"></i></p-inputGroupAddon>
+        <p-floatLabel>
+          <input pInputText id="idPersonaje"  disabled="true" type="text" [value]="personajeRecibido?.id_personaje"/>
+          <label for="idPersonaje">Id personaje</label>
+      </p-floatLabel>
+      </p-inputGroup>
+    </div>
+    <div class="field p-1">
+
+      <p-inputGroup >
+        <p-inputGroupAddon><i class="pi pi-user"></i></p-inputGroupAddon>
+        <p-floatLabel>
+          <input pInputText id="nomPersonaje"  formControlName="formNomPer" type="text"/>
+          <label for="nomPersonaje">Nombre Personaje</label>
+      </p-floatLabel>
+      </p-inputGroup>
+    </div>
+    <div class="field p-1">
+      <p-inputGroup>
+        <p-inputGroupAddon><i class="pi pi-book"></i></p-inputGroupAddon>
+        <p-floatLabel>
+          <input pInputText id="listaPersonajes" [value]="listCapitulosPersonaje" [disabled]="true"/>
+          <label for="listaPersonajes">Capiulos en los que aparece</label>
+      </p-floatLabel>
+      </p-inputGroup>
+    </div>
+
+    <div class="card flex justify-content-center">
+
+      <p-floatLabel>
+        <p-multiSelect
+          id="multi"
+          [options]="listaCapitulosdisponibles"
+          formControlName="selectedCapitulos"
+          optionLabel="value"
+          placeholder="Lista de Capitulos disponibles"
+      />
+      <label> Seleccione Los nuevos Capitulos </label>
+      </p-floatLabel>
+
+  </div>
+
+  </div>
+  <p-button type="button" (click)="onSubmit()" >
+    Editar
+  </p-button>
+
+
+</form>
+

@@ -1,0 +1,45 @@
+<h3>Crear Serie</h3>
+
+<form [formGroup]="formulario">
+
+    <!-- campo nombre -->
+    <div class="formgroup-inline">
+
+      <div class="field">
+        <p-inputGroup>
+          <p-inputGroupAddon>
+              <i class="pi pi-book"></i>
+          </p-inputGroupAddon>
+          <p-floatLabel>
+            <input pInputText id="nomSerInput" placeholder="Nombre Serie" formControlName="nombreSerie" type=""/>
+            <label for="nomSerInput">Nombre Serie</label>
+          </p-floatLabel>
+        </p-inputGroup>
+      </div>
+
+      <div class="field ">
+        <div class="flex flex-column gap-2">
+          <input
+            pInputText
+            value="Lista de Capitulos no asignable"
+            id="capituloInfo"
+            aria-describedby="capituloInfo-help"
+            [disabled]="true"
+          />
+          <small id="capituloInfo-help">
+            Los capitulos de una nueva Serie se asignan desde la pagina del capitulo
+          </small>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- capitulos -->
+     <div>
+      <p-button pButton  label="Crear" type="submit" (onClick)="onSubmit()"  class="bg-primary border-primary-500 px-3 py-2 text-base border-1 border-solid border-round cursor-pointer transition-all transition-duration-200 hover:bg-primary-600 hover:border-primary-600 active:bg-primary-700 active:border-primary-700"></p-button>
+     </div>
+
+</form>
+    <!-- boton formualrio  -->
+
+

@@ -1,0 +1,95 @@
+<h3>Editar Capitulo numero: {{capitulo?.numero_capitulo}}</h3>
+
+<form [formGroup]="formulario">
+  <div class="formgrid grid pt-2">
+
+    <div class="field col">
+      <!-- Id Capitulo -->
+      <div class="pt-1">
+        <p-inputGroup>
+          <p-inputGroupAddon>
+              <i class="pi pi-user"></i>
+          </p-inputGroupAddon>
+          <p-floatLabel >
+          <input pInputText placeholder="Id Capitulo" [disabled]="true" [value]="capitulo?.numero_capitulo">
+          <label for="username">Id Capitulo:</label>
+          </p-floatLabel>
+        </p-inputGroup>
+      </div>
+      <!-- campo nombre -->
+      <div class="pt-4">
+        <p-inputGroup>
+          <p-inputGroupAddon>
+              <i class="pi pi-user"></i>
+          </p-inputGroupAddon>
+          <p-floatLabel>
+            <input pInputText placeholder="Nombre" formControlName="nombre">
+            <label for="username">Nombre Capitulo:</label>
+          </p-floatLabel>
+        </p-inputGroup>
+
+      </div>
+    </div>
+
+
+
+    <div class="field col">
+      <!-- serie -->
+      <div class="pt-1">
+        <p-inputGroup>
+          <p-inputGroupAddon>
+              <i class="pi pi-book"></i>
+          </p-inputGroupAddon>
+          <p-floatLabel>
+          <input type="text" pInputText [disabled]="true"  [value]="getNombreSerieAnterior(capitulo!.serie)?.value"/>
+          <label >Nombre Serie anterior:</label>
+          </p-floatLabel>
+        </p-inputGroup>
+      </div>
+
+    <div class="pt-4">
+       <!-- DropDown para serie -->
+        <p-floatLabel>
+          <p-dropdown
+          id="dropdonwList"
+          formControlName="selectedSerie"
+          [options]="listaSeriesdisponibles"
+          optionLabel="value"
+          inputId="dropdown"
+          />
+          <label for="dropdown"> Seleccione nueva Serie</label>
+
+        </p-floatLabel>
+
+    </div>
+    </div>
+
+  </div>
+
+<!-- lista string -->
+<div>
+  @if (listapersonajes.length>0){
+    <label for="listbox"> Lista Personajes no editables </label>
+
+    <p-floatLabel>
+      <!-- <label for="listbox" mt-1 mb-1> No se puede Editar la Lista de personajes</label> -->
+      <p-listbox
+      p-listbox-header="no se puede editar"
+      id="listbox"
+      [disabled]="true"
+      [options]="listapersonajes"
+
+       />
+    </p-floatLabel>
+  }
+  @else {
+    <p>El capitulo no tiene personajes asignados (se asignan desde Personajes)</p>
+  }
+</div>
+
+</form>
+
+<div class="align-content-center">
+  <p-button pButton  label="Enviar" (onClick)="onSubmit()" ></p-button>
+</div>
+

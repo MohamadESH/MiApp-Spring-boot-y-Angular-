@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col">
+    <!-- Tabla  -->
+    <div class="card">
+      <p-table [value]="listaPersonajesFiltrada" [tableStyle]="{ 'min-width': '50rem' }"  >
+
+        <ng-template pTemplate="caption">
+          <div class="flex align-items-center justify-content-between">
+              Lista Personajes
+              <a routerLink="/crear-personajes" class="p-button font-bold">
+                Crear personaje
+            </a>
+              <component-search-box
+              placeholder="Buscar personaje por id"
+              (onDebounce)="searchPersonajeById($event)"
+              />
+          </div>
+      </ng-template>
+
+          <ng-template pTemplate="header" let-columns #table>
+              <tr>
+                  <th>#Id</th>
+                  <th>Nombre</th>
+                  <th>Capitulos en los que aparece</th>
+                  <th>Ver perfil</th>
+                  <th>Borrar perfil</th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-per >
+              <tr>
+                <td>
+                    {{ per.id_personaje }}
+                </td>
+                <td >
+                  {{ per.nombre_personaje }}
+                </td>
+                <td >
+                  {{ per.capitulos }}
+                </td>
+                <td >
+                <p-button label="Editar" (onClick)="goEditarPage(per)"></p-button>
+                </td>
+                <td>
+                  <p-button label="Borrar" severity="danger" (onClick)="borrarPersonaje(per.id_personaje)"></p-button>
+                </td>
+              </tr>
+          </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
+

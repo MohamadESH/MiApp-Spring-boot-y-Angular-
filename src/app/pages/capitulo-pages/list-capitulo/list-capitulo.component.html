@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col">
+    <!-- Tabla  -->
+     <p-toast [life]="1000" />
+    <div class="card">
+      <p-table [value]="listaCapitulosFiltrada" [tableStyle]="{ 'min-width': '50rem' }">
+
+        <ng-template pTemplate="caption">
+          <div class="flex align-items-center justify-content-between">
+            Lista Capitulos
+            <a routerLink="/crear-capitulos" class="p-button font-bold">
+              Crear Capitulo
+            </a>
+            <component-search-box
+              placeholder="Buscar capitulo por id"
+              (onDebounce)="searchCapituloById($event)"
+              />
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns #table>
+          <tr>
+            <th>#Id</th>
+            <th>Nombre de Capitulo</th>
+            <th>Serie a la que pertenece</th>
+            <th>Lista de sus Personajes</th>
+            <th>Editar Capitulo</th>
+            <th>Borrar Capitulo</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-caps>
+          <tr>
+            <td>
+              {{ caps.numero_capitulo }}
+            </td>
+            <td>
+              {{ caps.nombre_capitulo }}
+            </td>
+            <td>
+              {{ getNombreSerieAnterior(caps.serie) }}
+            </td>
+            <td>
+              {{ caps.personajes}}
+            </td>
+            <td>
+              <p-button label="Editar" (click)="goEditarPage(caps)"></p-button>
+            </td>
+            <td>
+              <p-button label="Borrar" severity="danger" (click)="borrarCapitulo(caps.numero_capitulo)"></p-button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+
+    </div>
+  </div>
+</div>

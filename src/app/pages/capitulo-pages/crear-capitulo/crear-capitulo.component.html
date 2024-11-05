@@ -1,0 +1,56 @@
+<h3>Crear Capitulo</h3>
+
+<form [formGroup]="formulario">
+  <div class="formgroup-inline pt-2">
+
+
+    <!-- id automatico -->
+    <!-- <div class="p-field p-col-12">
+      <p-inputGroup>
+        <p-inputGroupAddon>
+            <i class="pi pi-hashtag"></i>
+        </p-inputGroupAddon>
+        <input pInputText placeholder="El ID se asigna Automaticamente" [disabled]="true"  />
+      </p-inputGroup>
+    </div> -->
+
+    <!-- campo nombre -->
+    <div class="field ">
+      <p-inputGroup>
+        <p-inputGroupAddon>
+            <i class="pi pi-file"></i>
+        </p-inputGroupAddon>
+        <input pInputText placeholder="Nombre" formControlName="nombre" type=""/>
+      </p-inputGroup>
+
+    </div>
+
+    <!-- DropDown para serie -->
+     <div class="field">
+      <p-dropdown
+      formControlName="selectedSerie"
+      [options]="listaSeriesdisponibles"
+      placeholder="Selecciona Serie"
+      optionLabel="value"
+      />
+  </div>
+
+
+      <div class="field  ">
+        <p-inputGroup>
+          <p-inputGroupAddon>
+              <i class="pi pi-user"></i>
+          </p-inputGroupAddon>
+          <input pInputText placeholder="No se puede añadir Personajes desde aqui"[disabled]="true"/>
+        </p-inputGroup>
+      </div>
+
+
+  </div>
+
+  <div class="field col p-1">
+    <p-button pButton  label="Crear" type="submit" (click)="onSubmit()"></p-button>
+  </div>
+
+</form>
+

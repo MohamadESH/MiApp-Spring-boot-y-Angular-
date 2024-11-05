@@ -1,0 +1,51 @@
+<H3>Editar Serie: </H3>
+<form [formGroup]="formulario" >
+  <div class="formgroup-inline pt-2">
+    <!-- campo nombre -->
+    <div class="field">
+      <p-inputGroup>
+        <p-inputGroupAddon>
+          <i class="pi pi-hashtag"></i>
+        </p-inputGroupAddon>
+        <p-floatLabel>
+          <input pInputText id="idSerie" [value]="serieRecibida?.id_serie" disabled="true" >
+          <label for="idSerie">Id Serie</label>
+        </p-floatLabel>
+      </p-inputGroup>
+    </div>
+
+    <div class="field p-1">
+      <p-inputGroup>
+        <p-inputGroupAddon>
+          <i class="pi pi-book" ></i>
+        </p-inputGroupAddon>
+        <p-floatLabel>
+          <input pInputText id="nomSerie" formControlName="inputSerie" type="text">
+          <label for="nomSerie"> Nombre Serie</label>
+        </p-floatLabel>
+      </p-inputGroup>
+    </div>
+  </div>
+
+    <div>
+      @if (listaCapitulos.length>0){
+        <label for="listbox"> Lista de Personajes no editable desde Capitulos</label>
+
+        <p-floatLabel>
+          <!-- <label for="listbox" mt-1 mb-1> No se puede Editar la Lista de personajes</label> -->
+          <p-listbox
+          p-listbox-header="no se puede editar"
+          id="listbox"
+          [options]="listaCapitulos"
+           />
+        </p-floatLabel>
+      }
+      @else {
+        <p>El capitulo no tiene personajes asignados (se asignan desde Personajes)</p>
+      }
+    </div>
+
+</form>
+<div class="align-content-center">
+  <p-button pButton  label="Enviar" (click)="onSubmit()" ></p-button>
+</div>

@@ -1,0 +1,18 @@
+<div class="field">
+  <p-inputGroup>
+    <p-inputGroupAddon>
+      <i class="pi pi-filter"></i>
+    </p-inputGroupAddon>
+
+    <input
+    pInputText
+    type="text"
+    [value]="initialValue"
+    [placeholder]="placeholder"
+    (keyup.enter)="onKeyPress(txtInput.value)"
+    #txtInput
+    />
+
+  </p-inputGroup>
+
+
